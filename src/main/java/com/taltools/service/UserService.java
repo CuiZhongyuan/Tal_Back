@@ -1,9 +1,11 @@
 package com.taltools.service;
 
-import com.taltools.entity.User;
+import com.taltools.entity.UserEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface UserService {
-    User getUser(String name);
+    List<UserEntity> getAll(String name);
 }

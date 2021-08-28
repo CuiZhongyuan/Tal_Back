@@ -5,8 +5,7 @@ import org.springframework.context.ApplicationContext;
 /**
  * spring上下文
  *
- * @author yss
- * @date 2020-07-03
+ * @author czy
  */
 public class SpringContextUtil {
     private static ApplicationContext applicationContext;
