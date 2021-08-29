@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping("/test")
+    @GetMapping("/queryName")
     public Map<String,Object> getAll(@RequestParam("name") String name){
         Map<String, Object> repMap = new HashMap<>();
         repMap.put("code", 200);
