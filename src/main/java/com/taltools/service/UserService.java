@@ -7,5 +7,6 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    List<UserEntity> getAll(String name);
+    List<UserEntity> getQueryValue(String name);
+    List<UserEntity> getAll();
 }

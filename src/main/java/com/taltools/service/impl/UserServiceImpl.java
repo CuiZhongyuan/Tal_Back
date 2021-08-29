@@ -19,10 +19,15 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public List<UserEntity> getAll(String name) {
+    public List<UserEntity> getQueryValue(String name) {
         Map paramsMap = new HashMap();
         paramsMap.put("name",name);
-        log.info(JsonUtils.obj2json(userDao.getAll(paramsMap)));
-        return userDao.getAll(paramsMap);
+        log.info(JsonUtils.obj2json(userDao.getQueryValue(paramsMap)));
+        return userDao.getQueryValue(paramsMap);
+    }
+
+    @Override
+    public List<UserEntity> getAll() {
+        return userDao.getAll();
     }
 }
