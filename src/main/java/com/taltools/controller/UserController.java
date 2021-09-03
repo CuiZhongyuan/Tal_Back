@@ -19,6 +19,12 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    /**
+     * 测试使用
+     * @param name
+     * @return
+     */
     @GetMapping("/queryName")
     public Map<String,Object> getAll(@RequestParam("name") String name){
         Map<String, Object> repMap = new HashMap<>();
