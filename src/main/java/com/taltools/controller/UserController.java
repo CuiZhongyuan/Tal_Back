@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.taltools.entity.UserEntity;
 import com.taltools.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/api")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -50,5 +52,6 @@ public class UserController {
         PageInfo<UserEntity> pageInfo = new PageInfo<>(userEntityList);
         return pageInfo;
     }
+
 
 }

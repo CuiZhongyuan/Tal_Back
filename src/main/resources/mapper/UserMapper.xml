@@ -3,7 +3,9 @@
 <mapper namespace="com.taltools.dao.UserDao">
 
     <select id="getQueryValue"  parameterType="Map" resultType="com.taltools.entity.UserEntity">
-         SELECT * FROM `user`  WHERE `name` LIKE concat('%', #{name}, '%')
+         SELECT * FROM `user`
+         WHERE
+         `name` LIKE concat('%', #{name}, '%')
     </select>
     <select id="getAll" resultType="com.taltools.entity.UserEntity">
         SELECT * FROM `user`
