@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ListToArray {
     @Test
-    //list转数组
+    //list强转数组抛异常-ClassCastException
     public void arrayError(){
         List<String> listToArray = new ArrayList<>();
         listToArray.add("jav");
@@ -26,7 +26,7 @@ public class ListToArray {
     }
 
     @Test
-    //list转数组
+    //list转数组，使用object对象接受再循环遍历转出
     public void arrayObject(){
         List<String> listToArray = new ArrayList<>();
         listToArray.add("jav");
@@ -42,7 +42,7 @@ public class ListToArray {
     }
 
     @Test
-    //list转数组-优化
+    //list转数组-最优化写法
     public void OptimizeCode(){
         List<String> listToArray = new ArrayList<>();
         listToArray.add("jav");
