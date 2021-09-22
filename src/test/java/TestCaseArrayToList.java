@@ -36,17 +36,17 @@ public class TestCaseArrayToList {
     //list转数组
     public void array03(){
         List<String> listToArray = new ArrayList<>();
-        listToArray.add("hello");
-        listToArray.add(0, "world");
-        listToArray.add("MLDN");
-        listToArray.add("www.mldn.cn");
-
-        String[] s = new String[listToArray.size()];
-        Object[] o = listToArray.toArray();
-        for (int i = 0; i < o.length; i++) {
-            s[i] = o[i].toString();
-        }
-        System.out.println(Arrays.toString(s));
+        listToArray.add("jav");
+        listToArray.add(0, "python");
+        listToArray.add("php");
+        listToArray.add("c#");
+        String[] str = listToArray.toArray(new String[0]);
+//        String[] s = new String[listToArray.size()];
+//        Object[] o = listToArray.toArray();
+//        for (int i = 0; i < o.length; i++) {
+//            s[i] = o[i].toString();
+//        }
+        System.out.println(Arrays.toString(str));
     }
 
     /**
