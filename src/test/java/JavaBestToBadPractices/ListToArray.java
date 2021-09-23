@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * @author czy
  *  集合转数组：toArray()
  *  有些场景下（比如入参要求）需要将集合（比如List）转为数组类型，利用集合的toArray方法应该最为方便的，
  *  对于toArray()无参方法其返回的是Object[]，强制转其他类型数组会ClassCastException。
