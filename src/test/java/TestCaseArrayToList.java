@@ -1,10 +1,9 @@
 import com.taltools.utils.JsonUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
+import sun.security.util.ArrayUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -65,5 +64,41 @@ public class TestCaseArrayToList {
         String strList= String.join(",", stringList);
         System.out.println(strList);
     }
-
+    /**
+     * 数组升序，通过Java-Arrays.sort(arr)方法完成
+     */
+    @Test
+    public void arraySort(){
+       Arrays.sort(array);
+       System.out.println(Arrays.toString(array));
+    }
+    /**
+     * 数组降序，先用sort升序，然后使用ArrayUtils.reverse(array)翻转数组;
+     */
+    @Test
+    public void ArrayReverse(){
+        //先升序
+        Arrays.sort(array);
+        //通过reverse 颠倒给定数组的顺序, 实现降序
+        ArrayUtils.reverse(array);
+        System.out.println(Arrays.toString(array));
+    }
+    /**
+     * 集合升序
+     */
+    @Test
+    public void ArrayListSort(){
+        List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
+        Collections.sort(list);
+        System.out.println(list.toString());
+    }
+    /**
+     * 集合升序
+     */
+    @Test
+    public void ListReverse(){
+        List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
+        Collections.sort(list,Collections.reverseOrder());
+        System.out.println(list.toString());
+    }
 }
