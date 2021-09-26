@@ -28,12 +28,11 @@ public class UserController {
      * @return
      */
     @GetMapping("/queryName")
-    public Map<String,Object> getAll(@RequestParam("name") String name){
-        Map<String, Object> repMap = new HashMap<>();
-        repMap.put("code", 200);
-        repMap.put("message","操作成功");
-        repMap.put("data",userService.getQueryValue(name));
-        return repMap;
+    public PageInfo<UserEntity> getAll(@RequestParam("name") String name){
+        List<UserEntity> userEntityList = userService.getQueryValue(name);
+        //获取当前分页对象
+        PageInfo<UserEntity> pageInfo = new PageInfo<>(userEntityList);
+        return pageInfo;
     }
 
     /**

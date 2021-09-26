@@ -18,7 +18,7 @@ public class ListToArray {
     //list强转数组抛异常-ClassCastException
     public void arrayError(){
         List<String> listToArray = new ArrayList<>();
-        listToArray.add("jav");
+        listToArray.add("java");
         listToArray.add(0, "python");
         listToArray.add("php");
         listToArray.add("c#");
@@ -30,7 +30,7 @@ public class ListToArray {
     //list转数组，使用object对象接受再循环遍历转出
     public void arrayObject(){
         List<String> listToArray = new ArrayList<>();
-        listToArray.add("jav");
+        listToArray.add("java");
         listToArray.add(0, "python");
         listToArray.add("php");
         listToArray.add("c#");
@@ -43,14 +43,28 @@ public class ListToArray {
     }
 
     @Test
-    //list转数组-最优化写法
+    //list转数组-最优化写法，推荐
     public void OptimizeCode(){
         List<String> listToArray = new ArrayList<>();
-        listToArray.add("jav");
+        listToArray.add("java");
         listToArray.add(0, "python");
         listToArray.add("php");
         listToArray.add("c#");
         String[] str = listToArray.toArray(new String[0]);
+        System.out.println(Arrays.toString(str));
+    }
+
+    /**
+     * stream流写法，推荐
+     */
+    @Test
+    public void test(){
+        List<String> listToArray = new ArrayList<>();
+        listToArray.add("java");
+        listToArray.add(0, "python");
+        listToArray.add("php");
+        listToArray.add("c#");
+        String[] str = listToArray.stream().toArray(String[]::new);
         System.out.println(Arrays.toString(str));
     }
 
