@@ -18,16 +18,57 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
+    /**
+     * 条件查询实现
+     * @param name
+     * @param school
+     * @param createTime
+     * @return
+     */
     @Override
-    public List<UserEntity> getQueryValue(String name) {
-        Map paramsMap = new HashMap();
-        paramsMap.put("name",name);
-        log.info(JsonUtils.obj2json(userDao.getQueryValue(paramsMap)));
-        return userDao.getQueryValue(paramsMap);
+    public List<UserEntity> getQueryValue(String name,String school,String createTime) {
+        List<UserEntity>  userEntityList = null;
+        try {
+            log.info(JsonUtils.obj2json(userDao.getQueryValue(name,school,createTime)));
+            userEntityList = userDao.getQueryValue(name,school,createTime);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return userEntityList;
     }
 
+    /**
+     * 真分页实现
+     * @return
+     */
     @Override
     public List<UserEntity> getAll() {
         return userDao.getAll();
+    }
+
+    /**
+     * 添加实现
+     * @param userEntity
+     */
+    @Override
+    public void addUser(UserEntity userEntity) {
+        userDao.addUser(userEntity);
+    }
+
+    /**
+     * 删除实现
+     * @param id
+     * @return
+     */
+    @Override
+    public String deleteUser(String id) {
+        if ( id != null){
+           int rep =  userDao.deleteUser(id);
+            System.out.println(rep);
+            if (rep != 0){
+                return "success";
+            }
+        }
+        return "error";
     }
 }

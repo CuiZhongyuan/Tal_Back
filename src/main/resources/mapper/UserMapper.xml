@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taltools.dao.UserDao">
+    <resultMap id="classMsg" type="UserEntity">
+        <result property="id"  column="id" />
+        <result property="school"  column="school" />
+        <result property="name"  column="name" />
+        <result property="createTime"  column="create_time" />
+        <result property="testResult"  column="test_result" />
+        <result property="remark"  column="remark" />
+    </resultMap>
 
-    <select id="getQueryValue"  parameterType="Map" resultType="com.taltools.entity.UserEntity">
+    <select id="getQueryValue"   resultMap="classMsg">
          SELECT * FROM `user`
          WHERE
-         `name` LIKE concat('%', #{name}, '%')
+        <if test="school != null and school !=''">
+            `school` LIKE concat('%', #{school}, '%')
+        </if>
+         <if test="name != null and name != ''" >
+             AND
+             `name` LIKE concat('%', #{name}, '%')
+         </if>
+
+         <if test="createTime != null and createTime != ''">
+             AND
+             `create_time` LIKE concat('%', #{createTime}, '%')
+         </if>
     </select>
-    <select id="getAll" resultType="com.taltools.entity.UserEntity">
+
+    <select id="getAll" resultMap="classMsg">
         SELECT * FROM `user`
     </select>
+
+    <insert id="addUser" parameterType="com.taltools.entity.UserEntity">
+         INSERT INTO `mytest`.`user`(`school`, `name`, `create_time`, `test_result`, `remark`) VALUES ( #{school}, #{name}, #{createTime}, #{testResult}, #{remark})
+    </insert>
+
+    <delete id="deleteUser" parameterType="String">
+        <if test="id != null and id !=''">
+            DELETE  from `user` WHERE id = #{id}
+        </if>
+    </delete>
 </mapper>

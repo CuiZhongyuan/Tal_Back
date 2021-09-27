@@ -8,6 +8,8 @@ import java.util.Map;
 
 @Repository
 public interface UserDao {
-    List<UserEntity> getQueryValue(Map map);
+    List<UserEntity> getQueryValue(String name,String school,String createTime);
     List<UserEntity> getAll();
+    void addUser(UserEntity userEntity);
+    int deleteUser(String id);
 }

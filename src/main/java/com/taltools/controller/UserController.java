@@ -6,10 +6,7 @@ import com.taltools.entity.UserEntity;
 import com.taltools.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,15 +18,36 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     /**
-     * 测试使用
-     * @param name
+     * 删除接口
+     */
+    @GetMapping("/deleteUser")
+    public String deleteUser(@RequestParam(value = "id") String id){
+        return userService.deleteUser(id);
+    }
+    /**
+     * 新增接口
+     * @param req
      * @return
      */
-    @GetMapping("/queryName")
-    public PageInfo<UserEntity> getAll(@RequestParam("name") String name){
-        List<UserEntity> userEntityList = userService.getQueryValue(name);
+    @PostMapping("/addUser")
+    public UserEntity addUser(@RequestBody UserEntity req){
+        System.out.println(req);
+        if (req.getName() != null){
+            userService.addUser(req);
+        }else {
+            System.out.println("参数不能为空");
+        }
+        return req;
+    }
+    /**
+     * 查询
+     */
+    @GetMapping("/queryList")
+    public PageInfo<UserEntity> getAll(@RequestParam(value = "name" ,required=false) String name,
+                                       @RequestParam(value = "school") String school,
+                                       @RequestParam(value = "createTime",required = false)String createTime){
+        List<UserEntity> userEntityList = userService.getQueryValue(name,school,createTime);
         //获取当前分页对象
         PageInfo<UserEntity> pageInfo = new PageInfo<>(userEntityList);
         return pageInfo;
