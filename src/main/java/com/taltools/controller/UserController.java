@@ -41,6 +41,19 @@ public class UserController {
         return req;
     }
     /**
+     * 编辑接口
+     */
+    @PostMapping("/editUser")
+    public String editUser(@RequestBody UserEntity req){
+        System.out.println(req);
+        if (req.getSchool() !=null){
+           return userService.editUser(req);
+        }else {
+            System.out.println("请求参数不能为空");
+        }
+        return null;
+    }
+    /**
      * 查询
      */
     @GetMapping("/queryList")

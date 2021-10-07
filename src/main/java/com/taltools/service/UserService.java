@@ -12,4 +12,6 @@ public interface UserService {
     void addUser(UserEntity body);
 
     String deleteUser(String id);
+
+    String editUser(UserEntity req);
 }

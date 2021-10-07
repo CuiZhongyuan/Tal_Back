@@ -71,4 +71,15 @@ public class UserServiceImpl implements UserService {
         }
         return "error";
     }
+
+    @Override
+    public String editUser(UserEntity userEntity) {
+        if (userEntity.getId() != null){
+            int num = userDao.editUser(userEntity);
+            if (num != 0){
+                return "success";
+            }
+        }
+        return "error";
+    }
 }

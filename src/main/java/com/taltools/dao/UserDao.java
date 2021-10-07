@@ -12,4 +12,5 @@ public interface UserDao {
     List<UserEntity> getAll();
     void addUser(UserEntity userEntity);
     int deleteUser(String id);
+    int editUser(UserEntity userEntity);
 }
