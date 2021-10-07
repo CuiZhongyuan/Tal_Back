@@ -40,4 +40,8 @@
             DELETE  from `user` WHERE id = #{id}
         </if>
     </delete>
+
+    <update id="editUser" parameterType="com.taltools.entity.UserEntity" >
+        UPDATE `mytest`.`user` SET `school` = #{school}, `name` = #{name}, `create_time` = #{createTime}, `test_result` = #{testResult}, `remark` = #{remark} WHERE `id` = #{id}
+    </update>
 </mapper>
