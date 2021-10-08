@@ -90,15 +90,15 @@ public class TestCaseArrayToList {
     public void ArrayListSort(){
         List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
         Collections.sort(list);
-        System.out.println(list.toString());
+        System.out.println(list);
     }
     /**
-     * 集合升序
+     * 集合降序：先升序再翻转
      */
     @Test
     public void ListReverse(){
         List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
         Collections.sort(list,Collections.reverseOrder());
-        System.out.println(list.toString());
+        System.out.println(list);
     }
 }

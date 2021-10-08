@@ -1,8 +1,6 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class AlgorithmCase {
 
@@ -109,11 +107,32 @@ public class AlgorithmCase {
             System.out.print(arr[i]);
         }
         System.out.println();
-        //开辟一个O（n）的空间，利用空间换时间，时间复杂度O（n）
+        //开辟一个O（1）的空间，利用空间换时间，时间复杂度O（n）
         Set set = new HashSet();
-        for (int i=0;i<arr.length-1;i++){
+        for (int i=0;i<arr.length;i++){
             set.add(arr[i]);
         }
         System.out.println(set);
+    }
+    /**
+     * 题目：给定一个数组，没有重复的输出yes，反之为false,要求时间复杂度为O（n）
+     */
+    @Test
+    public void arrCase(){
+        int[] arr = {1,2,3,4,3};
+        Boolean result = arrCase1(arr);
+        System.out.println(result);
+    }
+    public Boolean arrCase1(int[] arry){
+        //创建一个map空间复杂度o(n)，查询map为时间复杂度为o(1)
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i=0;i<arry.length;i++){
+            if (map.containsKey(arry[i])){
+                return false;
+            }else {
+                map.put(arry[i],1);
+            }
+        }
+        return true;
     }
 }
