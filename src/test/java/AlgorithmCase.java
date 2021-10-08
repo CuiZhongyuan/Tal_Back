@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AlgorithmCase {
 
@@ -84,5 +86,34 @@ public class AlgorithmCase {
             arr[j+1]=temp;
         }
         System.out.println("插入排序后的数组"+Arrays.toString(arr));
+    }
+    /**
+     * 力扣：给定一个数组去重，要求：空间复杂度未O（1）
+     */
+    @Test
+    public void arrOneCase(){
+        int[] arr = {0,0,1,2,3,4,5,5,6,6,7};
+        //初始化中间值和新的长度
+        int temp = arr[0];
+        int len =1;
+        //循环去重
+        for (int i=1;i<arr.length;i++){
+            if (arr[i] != temp){
+                arr[len] = arr[i];
+                temp = arr[i];
+                len++;
+            }
+            System.out.print(len);
+        }
+        for (int i=0;i<len;i++){
+            System.out.print(arr[i]);
+        }
+        System.out.println();
+        //开辟一个O（n）的空间，利用空间换时间，时间复杂度O（n）
+        Set set = new HashSet();
+        for (int i=0;i<arr.length-1;i++){
+            set.add(arr[i]);
+        }
+        System.out.println(set);
     }
 }
