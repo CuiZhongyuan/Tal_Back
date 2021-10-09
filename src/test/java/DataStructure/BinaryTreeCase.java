@@ -10,7 +10,7 @@ import java.util.Queue;
 public class BinaryTreeCase {
     @Test
     public void caseTest(){
-        //初始化一个数组
+        //初始化一个长度为7的数组
         Integer[] arr = new Integer[7];
         for (int i=0;i<arr.length;i++){
             arr[i]=1+i;
