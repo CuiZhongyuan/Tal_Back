@@ -101,4 +101,21 @@ public class TestCaseArrayToList {
         Collections.sort(list,Collections.reverseOrder());
         System.out.println(list);
     }
+    /**
+     * 字符串切割
+     */
+    @Test
+    public void strCase(){
+        String str = "cuizhongyuan=19900725";
+        String[] strArr = str.split("=");
+        for (int i=0;i<strArr.length;i++){
+            System.out.println(strArr[i]);
+            if (strArr[i].equals("19900725")){
+                String str1 = str.replace("19900725","1990 ");
+                System.out.println(str1);
+                System.out.println(str1.trim());
+                System.out.println(str.charAt(0));
+            }
+        }
+    }
 }
