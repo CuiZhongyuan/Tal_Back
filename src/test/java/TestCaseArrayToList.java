@@ -192,6 +192,9 @@ public class TestCaseArrayToList {
 
     }
 
+    /**
+     * 找出一个数组出现的次数
+     */
     @Test
     public void ttt(){
         int[] arr = {2,3,4,3,6,7,4,2,3};
@@ -205,6 +208,28 @@ public class TestCaseArrayToList {
         }
         List<Integer> list = new ArrayList<>();
         System.out.println(map);
+    }
+    /**
+     * String类型转int类型2种常见方法
+     */
+    @Test
+    public void SringToint(){
+        String str ="123";
+        int num = Integer.valueOf(str).intValue();
+        int num2 = Integer.parseInt(str);
+        System.out.println(num);
+        System.out.println(num2);
+    }
+    /**
+     * int类型转String常见2种方式类型
+     */
+    @Test
+    public void intToString(){
+        int num = 123;
+        String str = String.valueOf(num);
+        String str2 = Integer.toString(num);
+        System.out.println(str);
+        System.out.println(str2);
     }
 
 
