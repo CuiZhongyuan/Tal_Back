@@ -118,4 +118,94 @@ public class TestCaseArrayToList {
             }
         }
     }
+
+
+        @Test
+        public  void testSort()
+        {
+            int[] ins = {2,3,5,1,23,6,78,34};
+            int[] ins2 = sort(ins,0,ins.length-1);
+            for(int in: ins2){
+                System.out.print(in);
+            }
+        }
+
+        public  int[] sort(int[] ins ,int start,int end){
+
+            if(start>=end){
+                return ins;//这个返回值并没有影响，因为这个返回值没有使用到。
+            }
+            int mid = ins[start];
+            int low = start;
+            int hight = end;
+            while(low < hight){
+                while(low < hight && ins[hight]>=mid){//
+                    hight -=1;
+                }
+                ins[low] = ins[hight];
+
+                while(low < hight && ins[low] < mid){
+                    low +=1;
+                }
+                ins[hight] = ins[low];
+            }
+            ins[low] = mid;
+            sort(ins, start, low-1);
+            sort(ins, low+1, end);
+            return ins;
+        }
+
+        @Test
+    public void bubbleSort() {
+            int[] nums = {2,6,3,7,9,5};
+        for (int i=1 ;i<nums.length;i++){
+            for (int j=0; j<nums.length-i;j++){
+                if (nums[j] > nums[j+1]){
+                    int temp = nums[j];
+                    nums[j] =nums[j+1];
+                    nums[j+1] = temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+    //选择排序，找出最小放到数组前
+    @Test
+    public void tt(){
+        int[] arr = {5,2,7,1,8};
+        int index;
+        int temp;
+        for (int i=0;i<arr.length;i++){
+            index=i;
+            for (int j=i+1;j<arr.length;j++){
+                if (arr[j]<arr[index]){
+                    index=j;
+                }
+            }
+            if (index != i){
+                temp=arr[i];
+                arr[i]=arr[index];
+                arr[index]=temp;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+
+    }
+
+    @Test
+    public void ttt(){
+        int[] arr = {2,3,4,3,6,7,4,2,3};
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i=0;i<arr.length;i++){
+           if (map.containsKey(arr[i])){
+               map.put(arr[i],map.get(arr[i])+1);
+           }else {
+               map.put(arr[i],1);
+           }
+        }
+        List<Integer> list = new ArrayList<>();
+        System.out.println(map);
+    }
+
+
 }

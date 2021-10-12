@@ -1,8 +1,10 @@
 package DataStructure;
 
 import com.taltools.entity.Node;
+import com.taltools.utils.JsonUtils;
 import org.junit.Test;
 
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 
 import java.util.Queue;
@@ -30,7 +32,7 @@ public class BinaryTreeCase {
         postOrderTraverse(node);
     }
 
-// 先序遍历
+// 前序遍历
     public static void preOrderTraverse(Node node) {
         if (node == null)
             return;

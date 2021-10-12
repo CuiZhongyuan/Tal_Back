@@ -1,3 +1,4 @@
+import com.alibaba.druid.sql.visitor.functions.Char;
 import org.junit.Test;
 
 import java.util.*;
@@ -134,5 +135,19 @@ public class AlgorithmCase {
             }
         }
         return true;
+    }
+
+    /**
+     * 反转字符串
+     * @return string字符串
+     */
+    @Test
+    public void solve () {
+        String str = "abcd";
+        char[] chars = str.toCharArray();
+        for(int i=0;i<str.length();i++){
+            chars[i] = str.charAt(str.length()-i-1);
+        }
+        System.out.print(chars);
     }
 }

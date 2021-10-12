@@ -38,4 +38,16 @@ public class QueueCase {
 
     }
 
+    @Test
+    public void ttt(){
+        String str = "123";
+        String[] num = str.split("\"");
+        for (int i=0;i<num.length;i++){
+            int integer = Integer.valueOf(num[i]);
+            System.out.println(integer);
+        }
+
+    }
+
+
 }
