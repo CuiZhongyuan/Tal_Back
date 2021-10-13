@@ -150,4 +150,27 @@ public class AlgorithmCase {
         }
         System.out.print(chars);
     }
+    /**
+     * 合并两个数组，再冒泡排序并排序
+     */
+    @Test
+    public void arrSum(){
+        int[] arr1 = {4,5,6,0,0,0};
+        int[] arr2 = {1,2,3};
+        int j = 0;
+        for(int i = 3 ; i < arr1.length; i++){
+            arr1[i] = arr2[j++];
+        }
+//        Arrays.sort(arr1);
+        for (int i= 0;i<arr1.length-1;i++){
+            for (int k=0;k<arr1.length-i-1;k++){
+                if (arr1[k]>arr1[k+1]){
+                    int temp = arr1[k];
+                    arr1[k]=arr1[k+1];
+                    arr1[k+1]=temp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(arr1));
+    }
 }
