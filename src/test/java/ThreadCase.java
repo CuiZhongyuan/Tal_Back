@@ -1,7 +1,7 @@
 import com.taltools.utils.RestTemplateUtils;
 
 public class ThreadCase {
-    private static final String URL="http://127.0.0.1:8080/api/getPage?pageNum=1&pageSize=10";
+    private static  String URL="http://127.0.0.1:8080/api/getPage?pageNum=1&pageSize=10";
     /**
      * 多线程学习
      */
@@ -40,9 +40,6 @@ public class ThreadCase {
             System.out.println("---------http并发请求--------------");
             System.out.println(RestTemplateUtils.get(url,String.class).getBody());
         }
-
-
-
     }
 
 }
