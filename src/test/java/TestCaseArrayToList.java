@@ -1,10 +1,8 @@
-import com.taltools.utils.JsonUtils;
+import com.taltools.utils.RestTemplateUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
-import sun.security.util.ArrayUtil;
 
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -230,6 +228,35 @@ public class TestCaseArrayToList {
         String str2 = Integer.toString(num);
         System.out.println(str);
         System.out.println(str2);
+    }
+
+    /**
+     * 取出出现一次的第二个字母
+     */
+    @Test
+    public void getStr(){
+        String str="dmmciokik";
+        char[] chars =str.toCharArray();
+        int index=0;
+        int[] arry = new int[6];
+        Map map =new HashMap();
+        List<String> list= new ArrayList<>();
+        for (char c:chars){
+            if (map.containsKey(c)){
+                map.put(c,String.valueOf(map.get(c))+1);
+                if (String.valueOf(map.get(c)).equals(11)){
+                    list.remove(String.valueOf(c));
+                }
+                System.out.println(index);
+            } else{
+                map.put(c,1);
+                list.add(index,String.valueOf(c));
+                index++;
+
+            }
+        }
+        System.out.println(map);
+        System.out.println(list);
     }
 
 

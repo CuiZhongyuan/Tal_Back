@@ -173,4 +173,10 @@ public class AlgorithmCase {
         }
         System.out.println(Arrays.toString(arr1));
     }
+
+    @Test
+    public void testc(){
+        String str= "dbdkcabnmo";
+
+    }
 }
