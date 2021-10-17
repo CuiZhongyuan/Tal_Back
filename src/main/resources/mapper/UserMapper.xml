@@ -16,6 +16,10 @@
         <if test="school != null and school !=''">
             `school` LIKE concat('%', #{school}, '%')
         </if>
+        <if test="id != null and id !=''">
+            AND
+            `id` LIKE concat('%', #{id}, '%')
+        </if>
          <if test="name != null and name != ''" >
              AND
              `name` LIKE concat('%', #{name}, '%')
@@ -29,6 +33,13 @@
 
     <select id="getAll" resultMap="classMsg">
         SELECT * FROM `user`
+    </select>
+    <select id="getId" resultMap="classMsg">
+        SELECT * FROM `user`
+        WHERE
+        <if test="id != null and id !=''">
+            `id` LIKE concat('%', #{id}, '%')
+        </if>
     </select>
 
     <insert id="addUser" parameterType="com.taltools.entity.UserEntity">

@@ -22,12 +22,16 @@ public class ThreadLocalCase {
 
         @Override
         public void run() {
-            //线程内并发数，当前线程内并发俩个
-            for (int i=0;i<2;i++){
-                //ThreadLocal.get方法获取线程变量
-                String getBody = RestTemplateUtils.get(url,String.class).getBody();
-                threadLocal.set(getBody);
-                System.out.println("当前线程名："+Thread.currentThread().getName()+"---:"+DateUtils.getSystime()+": "+threadLocal.get());
+            try{
+                //线程内并发数，当前线程内并发俩个
+                for (int i=0;i<1;i++){
+                    //ThreadLocal.get方法获取线程变量
+                    String getBody = RestTemplateUtils.get(url,String.class).getBody();
+                    threadLocal.set(getBody);
+                    System.out.println("当前线程名："+Thread.currentThread().getName()+"当前线程第几次并发数："+i+"---:"+DateUtils.getSystime()+": "+threadLocal.get());
+                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
         }
     }

@@ -54,13 +54,24 @@ public class UserController {
         return null;
     }
     /**
-     * 查询
+     * 条件查询
+     */
+    @GetMapping("/queryId")
+    public PageInfo<UserEntity> queryId(@RequestParam(value = "id" ) String id){
+        List<UserEntity> userEntityList = userService.getId(id);
+        //获取当前分页对象
+        PageInfo<UserEntity> pageInfo = new PageInfo<>(userEntityList);
+        return pageInfo;
+    }
+    /**
+     * 条件查询
      */
     @GetMapping("/queryList")
     public PageInfo<UserEntity> getAll(@RequestParam(value = "name" ,required=false) String name,
                                        @RequestParam(value = "school") String school,
+                                       @RequestParam(value = "id",required = false) String id,
                                        @RequestParam(value = "createTime",required = false)String createTime){
-        List<UserEntity> userEntityList = userService.getQueryValue(name,school,createTime);
+        List<UserEntity> userEntityList = userService.getQueryValue(name,school,createTime,id);
         //获取当前分页对象
         PageInfo<UserEntity> pageInfo = new PageInfo<>(userEntityList);
         return pageInfo;

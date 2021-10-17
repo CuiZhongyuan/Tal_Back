@@ -26,11 +26,11 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public List<UserEntity> getQueryValue(String name,String school,String createTime) {
+    public List<UserEntity> getQueryValue(String name,String school,String createTime,String id) {
         List<UserEntity>  userEntityList = null;
         try {
-            log.info(JsonUtils.obj2json(userDao.getQueryValue(name,school,createTime)));
-            userEntityList = userDao.getQueryValue(name,school,createTime);
+            log.info(JsonUtils.obj2json(userDao.getQueryValue(name,school,createTime,id)));
+            userEntityList = userDao.getQueryValue(name,school,createTime,id);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -81,5 +81,10 @@ public class UserServiceImpl implements UserService {
             }
         }
         return "error";
+    }
+
+    @Override
+    public List<UserEntity> getId(String id) {
+        return userDao.getId(id);
     }
 }
