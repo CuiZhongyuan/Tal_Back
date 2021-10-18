@@ -38,7 +38,7 @@
         SELECT * FROM `user`
         WHERE
         <if test="id != null and id !=''">
-            `id` LIKE concat('%', #{id}, '%')
+            `id` = #{id}
         </if>
     </select>
 
