@@ -54,7 +54,8 @@ public class UserController {
         return null;
     }
     /**
-     * 条件查询
+     * 点击编辑前根据ID查询接口
+     * @param id
      */
     @GetMapping("/queryId")
     public PageInfo<UserEntity> queryId(@RequestParam(value = "id" ) String id){

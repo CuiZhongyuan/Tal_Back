@@ -43,7 +43,9 @@
     </select>
 
     <insert id="addUser" parameterType="com.taltools.entity.UserEntity">
-         INSERT INTO `mytest`.`user`(`school`, `name`, `create_time`, `test_result`, `remark`) VALUES ( #{school}, #{name}, #{createTime}, #{testResult}, #{remark})
+         INSERT INTO `mytest`.`user`(`school`, `name`, `create_time`, `test_result`, `remark`)
+            VALUES
+          ( #{school}, #{name}, #{createTime}, #{testResult}, #{remark})
     </insert>
 
     <delete id="deleteUser" parameterType="String">
