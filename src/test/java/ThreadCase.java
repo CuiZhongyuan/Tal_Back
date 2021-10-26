@@ -3,7 +3,7 @@ import com.taltools.utils.RestTemplateUtils;
 public class ThreadCase {
     private static  String URL="http://127.0.0.1:8080/api/getPage?pageNum=1&pageSize=10";
     /**
-     * 多线程学习
+     * 多线程学习示例
      */
     public static void main(String[] args){
         System.out.println("程序开始，执行的线程名叫："+Thread.currentThread().getName());
