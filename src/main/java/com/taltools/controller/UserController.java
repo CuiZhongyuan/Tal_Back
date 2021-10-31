@@ -19,6 +19,13 @@ public class UserController {
     @Autowired
     private UserService userService;
     /**
+     * groovy脚本调试
+     * */
+    @PostMapping("/groovy")
+    public String testGroovy(@RequestBody String req){
+        return userService.testGroovy(req);
+    }
+    /**
      * 删除接口
      */
     @GetMapping("/deleteUser")

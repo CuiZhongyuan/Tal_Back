@@ -1,4 +1,4 @@
-package script;
+package groovytest;
 
 import com.taltools.test.http.HttpStepHeader;
 import com.taltools.script.ScriptManager;
@@ -6,6 +6,7 @@ import com.taltools.script.engine.ScriptContext;
 import com.taltools.script.engine.ScriptEngine;
 import com.taltools.script.engine.groovy.GroovyEngine;
 import com.taltools.utils.ExecUtil;
+import com.taltools.utils.JsonUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,14 +20,30 @@ import java.util.Map;
 public class GroovyEngineTest {
 
     @Test
+    public void testGroovy(){
+        String req = " static void main(String[] args){\n" +
+                "       println(testGroovy())\n" +
+                "   }\n" +
+                "    static String testGroovy(){\n" +
+                "        def name = 'java'\n" +
+                "        def greeting = \"Hello ${name}\"\n" +
+                "        return greeting\n" +
+                "    }";
+        GroovyEngine engine = new GroovyEngine();
+        ScriptContext ret = engine.runScript(req);
+        System.out.println(JsonUtils.obj2json(ret));
+    }
+
+    @Test
     public void testGroovyRun() {
         GroovyEngine engine = new GroovyEngine();
         ScriptContext context = new ScriptContext();
         context.setVariable("inParams", createInParams());
         Map<String, String> outParams = new LinkedHashMap<>();
+        outParams.put("key1","resp");
         context.setVariable("outParams", outParams);
         ScriptContext ret = engine.runScript("println(inParams['headers'][0].getKey()); outParams['myvar'] = 'yes'", context);
-        System.out.println(ret.getVariables());
+        System.out.println(JsonUtils.jsonFormatter(JsonUtils.mapToJson(ret.getVariables())));
     }
 
     @Test
@@ -55,9 +72,9 @@ public class GroovyEngineTest {
         Map<String, Object> ret = new LinkedHashMap<>();
         List<HttpStepHeader> headers = new ArrayList<>();
         headers.add(ExecUtil.createHttpStepHeader("Content-Type", "application/json"));
-        headers.add(ExecUtil.createHttpStepHeader("Cookie", "123=23"));
+        headers.add(ExecUtil.createHttpStepHeader("Cookie", "123"));
         ret.put("headers", headers);
-        ret.put("body","code=200");
+        ret.put("body","200");
         return ret;
     }
 }

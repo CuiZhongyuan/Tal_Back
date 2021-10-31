@@ -2,6 +2,8 @@ package com.taltools.service.impl;
 
 import com.taltools.dao.UserDao;
 import com.taltools.entity.UserEntity;
+import com.taltools.script.engine.ScriptContext;
+import com.taltools.script.engine.groovy.GroovyEngine;
 import com.taltools.service.UserService;
 import com.taltools.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -86,5 +89,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserEntity> getId(String id) {
         return userDao.getId(id);
+    }
+
+    /**
+     * groovy脚本实现
+     * */
+    @Override
+    public String testGroovy(String req) {
+
+        GroovyEngine engine = new GroovyEngine();
+        ScriptContext ret = engine.runScript(req);
+        return JsonUtils.obj2json(ret);
     }
 }

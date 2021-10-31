@@ -16,4 +16,6 @@ public interface UserService {
     String editUser(UserEntity req);
 
     List<UserEntity> getId(String id);
+
+    String testGroovy(String req);
 }

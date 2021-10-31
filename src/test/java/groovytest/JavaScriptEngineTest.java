@@ -1,4 +1,4 @@
-package script;
+package groovytest;
 
 import com.taltools.logger.SimpleLogger;
 import com.taltools.script.ScriptManager;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @author czy
  */
 public class JavaScriptEngineTest {
-    private static Path MOCKJS_PATH = Paths.get(".", "src", "test", "java", "cn", "speiyou", "qa", "auto", "exec", "script").resolve("mock.js");
+    private static Path MOCKJS_PATH = Paths.get(".", "src", "test", "java", "groovytest").resolve("mock.js");
 
     @Test
     public void testJavaScriptRun() throws IOException {
