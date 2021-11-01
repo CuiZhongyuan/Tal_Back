@@ -15,23 +15,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Chris Yin
+ * @author czy
  */
 public class GroovyEngineTest {
 
     @Test
     public void testGroovy(){
-        String req = " static void main(String[] args){\n" +
-                "       println(testGroovy())\n" +
-                "   }\n" +
+        String req = "    outParams['name'] = testGroovy();\n" +
                 "    static String testGroovy(){\n" +
                 "        def name = 'java'\n" +
                 "        def greeting = \"Hello ${name}\"\n" +
                 "        return greeting\n" +
                 "    }";
         GroovyEngine engine = new GroovyEngine();
-        ScriptContext ret = engine.runScript(req);
+        ScriptContext context = new ScriptContext();
+        LinkedHashMap<String, Object> outParams = new LinkedHashMap<>();
+        context.setVariable("outParams",outParams);
+        ScriptContext ret = engine.runScript(req,context);
         System.out.println(JsonUtils.obj2json(ret));
+        System.out.println(outParams);
+
     }
 
     @Test
