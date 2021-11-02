@@ -22,7 +22,7 @@ public class UserController {
      * groovy脚本调试
      * */
     @PostMapping("/groovy")
-    public String testGroovy(@RequestBody String req){
+    public Map testGroovy(@RequestBody String req){
         return userService.testGroovy(req);
     }
     /**

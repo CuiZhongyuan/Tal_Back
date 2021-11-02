@@ -4,6 +4,7 @@ import com.taltools.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface UserService {
@@ -17,5 +18,5 @@ public interface UserService {
 
     List<UserEntity> getId(String id);
 
-    String testGroovy(String req);
+    Map testGroovy(String req);
 }

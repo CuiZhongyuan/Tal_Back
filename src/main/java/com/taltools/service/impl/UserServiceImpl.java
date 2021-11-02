@@ -10,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -93,12 +90,22 @@ public class UserServiceImpl implements UserService {
 
     /**
      * groovy脚本实现
-     * */
+     *
+     * @return*/
     @Override
-    public String testGroovy(String req) {
+    public Map testGroovy(String req) {
+        Map reqMap = new HashMap();
+         try {
+             GroovyEngine engine = new GroovyEngine();
+             ScriptContext context = new ScriptContext();
+             LinkedHashMap<String, Object> outParams = new LinkedHashMap<>();
+             context.setVariable("outParams",outParams);
+             ScriptContext ret = engine.runScript(req,context);
 
-        GroovyEngine engine = new GroovyEngine();
-        ScriptContext ret = engine.runScript(req);
-        return JsonUtils.obj2json(ret);
+             reqMap.put("outParams",ret.getVariable("outParams"));
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+        return reqMap;
     }
 }
