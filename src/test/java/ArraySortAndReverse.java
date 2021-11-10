@@ -1,4 +1,9 @@
+import org.apache.coyote.Response;
+import org.apache.http.client.HttpClient;
 import org.junit.Test;
+
+import java.util.Map;
+import java.util.Stack;
 
 public class ArraySortAndReverse {
     @Test
@@ -66,4 +71,22 @@ public class ArraySortAndReverse {
             tail--;
         }
     }
+
+    @Test
+    public void testArray(){
+        int num =  6543;
+        String str = String.valueOf(num);
+        char[] chars = str.toCharArray();
+        Stack stack = new Stack();
+        for (char c :chars){
+            String ss = String.valueOf(c);
+           int  s = Integer.valueOf(ss);
+            stack.push(s);
+        }
+        for (int i=0;i<chars.length;i++){
+            System.out.print(stack.pop());
+        }
+
+    }
+
 }
