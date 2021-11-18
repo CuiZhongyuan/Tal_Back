@@ -1,3 +1,5 @@
+package concurrent;
+
 import com.taltools.utils.RestTemplateUtils;
 
 public class ThreadCase {
