@@ -1,0 +1,11 @@
+www.baidu.com
+http://127.0.0.1
+www.baidu.com
+http://127.0.0.7
+http://127.0.0.8
+http://127.0.0.1
+#java
+
+#python
+http://127.0.0.8
+http://127.0.0.8
