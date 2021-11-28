@@ -53,4 +53,36 @@ public class StackCase {
         }
     }
 
+    @Test
+    public void testDemo(){
+        String str = "123(-321)";
+        //期望输出321(-123)
+        char[] chars = str.toCharArray();
+        Stack stack = new Stack();
+        StringBuffer stringBuffer = new StringBuffer();
+        for (int i= 0;i<chars.length;i++){
+            if (i<3){
+                stack.push(chars[i]);
+            }else if (i==3 || i==4){
+                if (i==3){
+                    for (int j=0;j<3;j++){
+                        stringBuffer.append(stack.pop());
+                    }
+                    stringBuffer.append("(");
+                }
+                if (i==4){
+                    stringBuffer.append("-");
+                }
+            }else if(i>4&&i<chars.length-1){
+               stack.push(chars[i]);
+            }else {
+                for (int k=5;k<chars.length-1;k++){
+                    stringBuffer.append(stack.pop());
+                }
+                stringBuffer.append(")");
+            }
+        }
+        System.out.println(stringBuffer);
+    }
+
 }
