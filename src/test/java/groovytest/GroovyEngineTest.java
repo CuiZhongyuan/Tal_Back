@@ -34,7 +34,6 @@ public class GroovyEngineTest {
         ScriptContext ret = engine.runScript(req,context);
         System.out.println(JsonUtils.obj2json(ret));
         System.out.println(outParams);
-
     }
 
     @Test
