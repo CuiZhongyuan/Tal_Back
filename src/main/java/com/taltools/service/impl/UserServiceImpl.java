@@ -12,11 +12,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@SuppressWarnings("ALL")
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
+
 
     /**
      * 条件查询实现

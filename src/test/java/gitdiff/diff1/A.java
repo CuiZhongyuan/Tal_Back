@@ -2,7 +2,7 @@ package gitdiff.diff1;
 
 import java.util.Random;
 
-public class Diff1 {
+public class A {
     public static void main(String[] args){
         int getNum = randomNumber(10,20);
         if (getNum==30){
@@ -10,6 +10,7 @@ public class Diff1 {
         }else {
             System.out.println("此次没有找到="+getNum);
         }
+
     }
     public static int randomNumber(int minNum,int maxNum){
         Random rand = new Random();
