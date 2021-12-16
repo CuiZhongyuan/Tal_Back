@@ -177,6 +177,22 @@ public class AlgorithmCase {
     @Test
     public void testc(){
         String str= "dbdkcabnmo";
-
+        char[] chars = str.toCharArray();
+        for (char c : chars){
+            System.out.print(c);
+        }
     }
+    @Test
+    public void testdemo(){
+        String str = "12567";
+        char[] chars = str.toCharArray();
+        for (char c :chars){
+            int num = Integer.valueOf(String.valueOf(c));
+            System.out.print(num);
+        }
+    }
+
+
+
+
 }
