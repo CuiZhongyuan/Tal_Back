@@ -1,7 +1,7 @@
 package gitdiff;
 
 import com.taltools.entity.AnalysisDiffCode;
-import com.taltools.service.impl.AnalysisCodeService;
+import com.taltools.service.impl.AnalysisCodeServiceImpl;
 import com.taltools.utils.ShellUtils;
 import org.junit.Test;
 
@@ -16,8 +16,8 @@ public class GitDiffTest {
        for (String str : list){
            System.out.println(str);
        }
-        AnalysisCodeService analysisCodeService = new AnalysisCodeService();
-       List<AnalysisDiffCode> listCode = analysisCodeService.analysisDiffCode(list);
+        AnalysisCodeServiceImpl analysisCodeServiceImpl = new AnalysisCodeServiceImpl();
+       List<AnalysisDiffCode> listCode = analysisCodeServiceImpl.analysisDiffCode(list);
        for (AnalysisDiffCode a : listCode){
            for (AnalysisDiffCode.LineWithCodeList l : a.getLineCodeList()){
                for (String s: l.getDiffCodeList()){
