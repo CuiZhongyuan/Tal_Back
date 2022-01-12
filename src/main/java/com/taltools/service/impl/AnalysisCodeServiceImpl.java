@@ -15,7 +15,8 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class AnalysisCodeService {
+public class AnalysisCodeServiceImpl {
+
 
     /**
      * 根据diff结果取出新代码
