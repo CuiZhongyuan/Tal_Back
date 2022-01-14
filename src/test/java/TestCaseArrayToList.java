@@ -1,4 +1,3 @@
-import com.taltools.utils.RestTemplateUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
@@ -257,6 +256,33 @@ public class TestCaseArrayToList {
         }
         System.out.println(map);
         System.out.println(list);
+    }
+    @Test
+    public void tt1(){
+        Scanner sc = new Scanner(System.in);
+        // 循环连续读取
+        while(sc.hasNext()){
+            String line = sc.nextLine();
+            outPrint(line);
+        }
+
+    }
+
+    private void outPrint(String line) {
+        if(line.length()<=8){
+            int num = 8 - line.length();
+            StringBuffer stringBuffer = new StringBuffer(line);
+            // 小于8后面补0
+            for (int i = 0; i < num; i++) {
+                stringBuffer.append(0);
+            }
+            System.out.println(stringBuffer.toString());
+        }else{
+            String substring = line.substring(0, 8);
+            System.out.println(substring);
+            // 长度超过8的递归处理
+            outPrint(line.substring(8));
+        }
     }
 
 
