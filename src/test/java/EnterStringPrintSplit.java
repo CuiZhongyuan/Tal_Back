@@ -4,8 +4,25 @@ import org.junit.Test;
 public class EnterStringPrintSplit {
     @Test
     public void getResoult(){
-        String str ="123456789012121212121";
-        outPrint(str);
+        String str ="121312121212";
+//        outPrint(str);
+        tt(str);
+
+    }
+    public void  tt(String str){
+        char[] chars = str.toCharArray();
+        int num = chars.length%8;
+        StringBuffer stringBuffer = new StringBuffer(str);
+        if (chars.length<8){
+            for (int i=0;i<num;i++){
+                stringBuffer.append("0");
+            }
+            System.out.println(stringBuffer);
+        }else {
+            System.out.println(str.substring(0,8));
+            tt(str.substring(8));
+        }
+
     }
     private void outPrint(String line) {
         if(line.length()<=8){

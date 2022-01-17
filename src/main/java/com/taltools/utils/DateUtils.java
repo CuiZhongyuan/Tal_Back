@@ -478,9 +478,9 @@ public class DateUtils {
      * @return 计算错误返回0
      */
     public static Boolean compareCurrentDate(String startTime, String endTime, String format) {
-        Date startDate = com.taltools.utils.DateUtils.stringToDate(startTime, format);
-        Date nowDate = com.taltools.utils.DateUtils.stringToDate(com.taltools.utils.DateUtils.getSystime(), format);
-        Date endDate = com.taltools.utils.DateUtils.stringToDate(endTime, format);
+        Date startDate = DateUtils.stringToDate(startTime, format);
+        Date nowDate = DateUtils.stringToDate(DateUtils.getSystime(), format);
+        Date endDate = DateUtils.stringToDate(endTime, format);
         long d1 = startDate.getTime();
         long d2 = nowDate.getTime();
         long d3 = endDate.getTime();
@@ -499,9 +499,9 @@ public class DateUtils {
      * @return 计算错误返回0
      */
     public static Boolean compareCurrentTime(String startTime, String endTime, String format) {
-        Date startDate = com.taltools.utils.DateUtils.stringToDate(startTime, format);
-        Date nowDate = com.taltools.utils.DateUtils.stringToDate(com.taltools.utils.DateUtils.getTime(), format);
-        Date endDate = com.taltools.utils.DateUtils.stringToDate(endTime, format);
+        Date startDate = DateUtils.stringToDate(startTime, format);
+        Date nowDate = DateUtils.stringToDate(DateUtils.getTime(), format);
+        Date endDate = DateUtils.stringToDate(endTime, format);
         long d1 = startDate.getTime();
         long d2 = nowDate.getTime();
         long d3 = endDate.getTime();
@@ -539,8 +539,8 @@ public class DateUtils {
      * @return 计算错误返回0
      */
     public static Boolean compareDateTime(String time1, String time2, String format) {
-        Date date1 = com.taltools.utils.DateUtils.stringToDate(time1, format);
-        Date date2 = com.taltools.utils.DateUtils.stringToDate(time2, format);
+        Date date1 = DateUtils.stringToDate(time1, format);
+        Date date2 = DateUtils.stringToDate(time2, format);
         if (date1.getTime() > date2.getTime()) {
             return true;
         } else {
