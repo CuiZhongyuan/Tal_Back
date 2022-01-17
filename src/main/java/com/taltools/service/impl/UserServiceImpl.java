@@ -1,5 +1,6 @@
 package com.taltools.service.impl;
 
+import cn.hutool.core.date.DateTime;
 import com.taltools.dao.UserDao;
 import com.taltools.entity.UserEntity;
 import com.taltools.script.engine.ScriptContext;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @SuppressWarnings("ALL")
@@ -46,6 +48,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<UserEntity> getAll() {
+        List<UserEntity> list = userDao.getAll();
+        for (UserEntity u :list){
+            System.out.println(u.getCreateTime().toString());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            System.out.println(simpleDateFormat.format(u.getCreateTime())+"======");
+            System.out.println(u.getCreateTime().getTime()+"****");
+            //日期类作差
+            System.out.println(simpleDateFormat.format(new Date(u.getCreateTime().getTime()-(long)5*24*60*60*1000)));
+        }
         return userDao.getAll();
     }
 
