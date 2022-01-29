@@ -8,10 +8,21 @@ public class EnterStringPrintSplit {
      */
     @Test
     public void testPalindrome(){
-        String str = "abcbaa";
-        StringBuilder sb = new StringBuilder(str);
-        String str2 = sb.reverse().toString();
+        String str = "abcba";
+//        StringBuilder sb = new StringBuilder(str);
+        //调用内部方法反转字符串
+//        String str2 = sb.reverse().toString();
+        //调用自写反转方法
+        String str2 = returnReverse(str);
         System.out.println(str.equals(str2)?"是回文字符串":"不是回文字符串");
+    }
+    public String returnReverse(String str){
+        char[] chars = str.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        for (int i = chars.length-1; i >=0 ; i--) {
+            sb.append(chars[i]);
+        }
+        return sb.toString();
     }
     /**
      * 输入字符串，请按长度为8拆分每个输入字符串并进行输出；
