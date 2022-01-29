@@ -4,6 +4,29 @@ import org.junit.Test;
 
 public class EnterStringPrintSplit {
     /**
+     * 递归:斐波那契数列或者阶乘
+     */
+    @Test
+    public void testDg(){
+        int num = 5;
+        System.out.println(getDiGui(num));
+    }
+
+    private int getDiGui(int num) {
+        if (num==0){
+            return  0;
+        }else if (num==1){
+            return 1;
+        }else if (num==2){
+            return 2;
+        }else {
+            //规则调用自己，递归耗栈内存
+           return getDiGui(num-1)+getDiGui(num-2);
+        }
+
+    }
+
+    /**
      * 判断一个字符串是否是回文字符串
      */
     @Test
