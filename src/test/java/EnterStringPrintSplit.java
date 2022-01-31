@@ -1,8 +1,35 @@
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 
 public class EnterStringPrintSplit {
+    /**
+     * 迭代器遍历ArrayList
+     * 在使用迭代器遍历集合的过程中，不能使用元素集合对象删除元素
+     * 只能使用迭代器对象去删除元素，否则会出现ConcurrentModificationException异常
+     * 如果想删除元素，只能通过迭代器对象删除元素
+     */
+    @Test
+    public void arrayList(){
+        List<String> list = new ArrayList<>();
+        list.add("tester");
+        list.add("RD");
+        list.add("PMO");
+        Iterator<String> listIt = list.iterator();
+        System.out.println(list.size());
+        while (listIt.hasNext()){//如果有下一个元素，返回true
+            System.out.println(listIt.next());
+            //不可以用list.remove();
+            //使用迭代器对象删除
+            listIt.remove();
+        }
+        System.out.println(list.size());
+    }
     /**
      * 递归:斐波那契数列或者阶乘
      */
@@ -99,7 +126,9 @@ public class EnterStringPrintSplit {
         //2*43210
         for (int i = 0; i <biary.length(); i++) {
             char c = biary.charAt(i);
-            int j = Integer.parseInt(c+"");
+            //parseInt用于将字符串参数作为有符号的十进制整数进行解析
+            int j = Integer.parseInt(String.valueOf(c),10);
+//            int j = Integer.valueOf(String.valueOf(c));
             //getTwoPower：次方函数实现
             sum+=j*getTwoPower(2,biary.length()-i-1);
         }
