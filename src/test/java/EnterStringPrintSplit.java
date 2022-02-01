@@ -1,13 +1,36 @@
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 
 public class EnterStringPrintSplit {
+    /**
+     * LinkedList：双向列表结构
+     * 1、实现队列
+     * 2、实现栈
+     */
+    //1、实现队列
+    @Test
+    public void queueTest(){
+        Queue<String> q = new LinkedList<>();
+        q.offer("001");
+        q.offer("002");
+        q.offer("003");
+        System.out.println(q.poll());
+        System.out.println(q.poll());
+    }
+    //2、实现栈
+    @Test
+    public void stackTest(){
+        Deque<String> d = new LinkedList<>();
+        d.push("001");
+        d.push("002");
+        d.push("003");
+        System.out.println(d.poll());
+        System.out.println(d.poll());
+    }
+
     /**
      * 迭代器遍历ArrayList
      * 在使用迭代器遍历集合的过程中，不能使用元素集合对象删除元素
