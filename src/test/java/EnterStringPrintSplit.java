@@ -6,6 +6,32 @@ import java.util.*;
 
 public class EnterStringPrintSplit {
     /**
+     * 集合的常用api,集合工具类Collections
+     */
+    @Test
+    public void listTest(){
+        List<String> list = new ArrayList<>();
+        list.add("f");
+        list.add("e");
+        list.add("d");
+        String[] str = {"a","b","c"};
+        //添加
+        Collections.addAll(list,str);
+        System.out.println(list);
+        //升序
+        Collections.sort(list);
+        System.out.println(list);
+        //二分查找必须是升序的集合
+        System.out.println(Collections.binarySearch(list,"a"));
+        //反转
+        Collections.reverse(list);
+        System.out.println(list);
+        Map map = new HashMap();
+        map.put("a","001");
+        map.put("b","002");
+        map.put("c","003");
+    }
+    /**
      * LinkedList：双向列表结构
      * 1、实现队列
      * 2、实现栈
