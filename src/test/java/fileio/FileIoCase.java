@@ -6,19 +6,51 @@ import java.io.*;
 import java.util.Date;
 
 public class FileIoCase {
+
+    //整体复制目录及子目录文件
+    @Test
+    public void testCopy() throws IOException {
+        copyDirectory(new File("/Users/cuizhongyuan/Desktop/work/test"),
+                new File("/Users/cuizhongyuan/Desktop/work/test01"));
+    }
+    /**
+     *
+     * @param oldDir:原目录路径
+     * @param newDir：目标路径
+     * @throws IOException
+     */
+    //目录复制
+    public void copyDirectory(File oldDir,File newDir) throws IOException {
+        if (!newDir.exists()){
+            newDir.mkdirs();
+        }
+        File[] files = oldDir.listFiles();
+        for (File file:files){
+            //通过父目录和子目录，获取当前子目录
+            File nextFile = new File(newDir,file.getName());
+            if (file.isFile()){
+                //如果是文件，走调用单个文件复制
+                iOPictureCopy(file,nextFile);
+            }else {
+                //如果是子目录，走递归复制
+                copyDirectory(file,nextFile);
+            }
+        }
+
+    }
     /**
      * 通过字节流复制多媒体文件（图片或者视频）
      */
-    @Test
-    public void iOPictureCopy() throws IOException {
+    //复制单个文件
+    public void iOPictureCopy(File oldFile,File newFile) throws IOException {
         //字节流输入流
         //节点流
-        InputStream is = new FileInputStream(new File("/Users/cuizhongyuan/Desktop/work/test/newjpg/Coding测试.jpg"));
+        InputStream is = new FileInputStream(oldFile);
         //处理流
         BufferedInputStream bis = new BufferedInputStream(is);
         //字节流输出流
         //节点流
-        OutputStream os = new FileOutputStream(new File("/Users/cuizhongyuan/Desktop/work/test/oldjpg/Coding测试.jpg"));
+        OutputStream os = new FileOutputStream(newFile);
         //处理流,通常使用处理流的api
         BufferedOutputStream bos  = new BufferedOutputStream(os);
         //文件的读取和输出
