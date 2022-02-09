@@ -1,10 +1,33 @@
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class EnterStringPrintSplit {
+    /**
+     * 线程池-Runable并发方式
+     */
+    @Test
+    public void poolRunableTest(){
+        //1、获取线程池服务执行对象
+       ExecutorService e =  Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 20; i++) {
+            int x=i;
+            //2、提交放入线程池的任务，继承Runable接口
+           Runnable runnable = new Runnable(){
+                @Override
+                public void run() {
+                    System.out.println(Thread.currentThread().getName()+"执行了"+x+"多少号");
+                }
+            };
+           e.execute(runnable);
+        }
+        //3、关闭线程池服务
+        e.shutdown();
+    }
     /**
      * 集合的常用api,集合工具类Collections
      */
