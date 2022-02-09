@@ -1,12 +1,44 @@
 import org.junit.Test;
 
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 
 public class EnterStringPrintSplit {
+
+    /**
+     * 线程池-Callable并发方式
+     */
+    @Test
+    public void pollCallableTest() throws ExecutionException, InterruptedException {
+        //1、获取线程池服务
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        //2、匿名提交callable并发任务
+        //Futur任务先存于集合中再遍历取出执行，原因是由于future.get()方法需要等Callable方法执行完成后才会执行
+        List<Future<Integer>> futures = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            int x =i;
+            Callable<Integer> callable = new Callable<Integer>(){
+                @Override
+                public Integer call() throws Exception {
+                    Thread.sleep(5000);
+                    int num =  new Random().nextInt(1000);
+                    System.out.println(Thread.currentThread().getName()+"执行了"+x+"多少号"+"生成随机数"+num);
+                    return num;
+                }
+            };
+            //submit支持Runable或者Callable对象
+            Future<Integer> future = executorService.submit(callable);
+            // future.get()作用域是callable方法执行完成后才会执行下次循环
+//            future.get();
+            futures.add(future);
+        }
+        //遍历Future并发执行
+        for(Future<Integer> future : futures){
+            System.out.println(future.get());
+        }
+    }
+
     /**
      * 线程池-Runable并发方式
      */
