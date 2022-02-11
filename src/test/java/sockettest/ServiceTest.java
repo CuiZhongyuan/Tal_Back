@@ -15,6 +15,7 @@ public class ServiceTest {
         ServerSocket serverSocket = new ServerSocket(9999);
         System.out.println("服务端开始接受，等待用户链接");
         Socket socket =  serverSocket.accept();
+        System.out.println("客服端"+socket.getInetAddress()+"已建立连接");
         //字节流，创建字节流对象后塞入处理流，用处理流的api操作
         //输入节点流
         InputStream inputStream = socket.getInputStream();
