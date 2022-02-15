@@ -8,8 +8,22 @@ import java.util.stream.Collectors;
  * 测试类
  */
 public class TestCaseArrayToList {
-    int[] array = new int[]{0, 5, 9, 3, 4};
+    int[] array = new int[]{1, 2, 4, 0, 0};
+    int[] b = {1,2};
     String[] stringArray = { "a", "b", "c", "d", "e" };
+
+    /**
+     *合并两个数组
+     */
+    @Test
+    public void hebingTest(){
+        int index = 3;
+        for (int i = 0; i <b.length; i++) {
+            array[index +i] = b[i];
+        }
+        System.out.println(Arrays.toString(array));
+    }
+
     /**
      * 数组常用方法
      */

@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author czy
+ */
 @RestController
 @RequestMapping(value = "/api")
 public class UserController {
@@ -76,7 +79,7 @@ public class UserController {
      */
     @GetMapping("/queryList")
     public PageInfo<UserEntity> getAll(@RequestParam(value = "name" ,required=false) String name,
-                                       @RequestParam(value = "school") String school,
+                                       @RequestParam(value = "school" ) String school,
                                        @RequestParam(value = "id",required = false) String id,
                                        @RequestParam(value = "createTime",required = false)String createTime){
         List<UserEntity> userEntityList = userService.getQueryValue(name,school,createTime,id);

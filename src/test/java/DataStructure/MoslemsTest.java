@@ -28,4 +28,14 @@ public class MoslemsTest {
         }
         System.out.println(tag);
     }
+
+    //倒叙添加至StringBuffer里，然后与原有字符串对比回文
+    public String returnReverse(String str){
+        char[] chars = str.toCharArray();
+        StringBuffer sb = new StringBuffer();
+        for (int i = chars.length-1; i >=0 ; i--) {
+            sb.append(chars[i]);
+        }
+        return sb.toString();
+    }
 }
