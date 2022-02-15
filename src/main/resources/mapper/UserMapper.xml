@@ -12,23 +12,24 @@
 
     <select id="getQueryValue"   resultMap="classMsg">
          SELECT * FROM `user`
+         -- 当User对象为空时，sql只解析 SELECT * FROM `user`；后面条件不执行
          WHERE
-        <if test="school != null and school !=''">
-            `school` LIKE concat('%', #{school}, '%')
-        </if>
-        <if test="id != null and id !=''">
-            AND
-            `id` LIKE concat('%', #{id}, '%')
-        </if>
-         <if test="name != null and name != ''" >
-             AND
-             `name` LIKE concat('%', #{name}, '%')
-         </if>
+            <if test="school != null and school !=''">
+                `school` LIKE concat('%', #{school}, '%')
+            </if>
+            <if test="id != null and id !=''">
+                AND
+                `id` LIKE concat('%', #{id}, '%')
+            </if>
+             <if test="name != null and name != ''" >
+                 AND
+                 `name` LIKE concat('%', #{name}, '%')
+             </if>
 
-         <if test="createTime != null and createTime != ''">
-             AND
-             `create_time` LIKE concat('%', #{createTime}, '%')
-         </if>
+             <if test="createTime != null and createTime != ''">
+                 AND
+                 `create_time` LIKE concat('%', #{createTime}, '%')
+             </if>
     </select>
 
     <select id="getAll" resultMap="classMsg">
